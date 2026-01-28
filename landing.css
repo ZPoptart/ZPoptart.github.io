@@ -1,0 +1,52 @@
+:root {
+    font-family: "texturina";
+    --bg-primary: #000;
+    --bg-secondary: #fff;
+    --text-primary: #fff;
+    --text-size: 17px;
+}
+
+body {
+    background-color: var(--bg-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0  ;
+}
+
+.picture img{
+    border: 5px solid var(--bg-secondary);
+    width: 300px;
+    height: auto;
+}
+
+.typed-text {
+    font-size: var(--text-size);
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 30px;
+    margin-left: 20px;
+}
+.white-box {
+    margin-left: 50px;
+    border: 5px solid var(--bg-secondary);
+    height: 300px;
+    width: 1250px;
+}
+
+.typed-text span {
+    opacity: 0;
+    animation: fadeIn 0.1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.main-link, .secondary-link {
+    color: var(--text-primary);
+    text-decoration: none;
+}

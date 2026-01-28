@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="landing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(˶˃𐃷˂˶)</title>
+</head>
+<body>
+    <div class="picture">
+        <img src="Images/image(1).png" alt="">
+    </div>
+    <div class="white-box">
+        <div class="typed-text" id="text-container"></div>
+        <div class="typed-text-2" id="text-container-2"></div>
+    </div>
+
+    <script>
+        const lines = [
+            "Hey I'm Poppy.",
+            " You seem familiar... but we have yet to meet.",
+            "Look around by clicking on the options below."
+        ];
+
+        const links = [
+            { text: "Poppy", url: "Poppy.html", class: "main-link" },
+            { text: "Collection", url: "Collection.html", class: "secondary-link" },
+            { text: "Projects", url: "Projects.html", class: "secondary-link" }
+        ]
+
+        const container = document.getElementById('text-container');
+        const baseDelay = 0.05;
+        let totalCharactersTyped = 0;
+
+        lines.forEach((line, lineIndex) => {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'typing-line';
+            
+            const characters = line.split('').map((char, charIndex) => {
+                const span = document.createElement('span');
+                span.textContent = char === ' ' ? ' ' : char;
+                span.style.animationDelay = `${(totalCharactersTyped + charIndex) * baseDelay}s`;
+                return span;
+            });
+            
+            characters.forEach(char => lineDiv.appendChild(char));
+            
+            container.appendChild(lineDiv);
+            
+            totalCharactersTyped += line.length;
+            
+            if (lineIndex < lines.length - 1) {
+                totalCharactersTyped += 10; // Adds 0.5s pause between lines
+            }
+        });
+
+        setTimeout(() => {
+        const linksContainer = document.createElement('div');
+        linksContainer.className = 'links-container';
+        linksContainer.style.opacity = '0';
+        linksContainer.style.animation = 'fadeIn 0.8s forwards';
+        linksContainer.style.animationDelay = '0.5s';
+    
+        links.forEach((link, index) => {
+            const linkElement = document.createElement('a');
+            linkElement.href = link.url;
+            linkElement.textContent = link.text;
+            linkElement.className = `nav-link ${link.class}`;
+            
+            linkElement.style.animationDelay = `${index * 0.2}s`;
+            
+            linksContainer.appendChild(linkElement);
+            
+            if (index < links.length - 1) {
+                const spacer = document.createElement('span');
+                spacer.innerHTML = '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                spacer.className = 'link-spacer';
+                linksContainer.appendChild(spacer);
+            }
+        });
+    
+    container.appendChild(linksContainer);
+    
+}, (totalCharactersTyped * baseDelay * 1000) + 400);
+
+    </script>
+</body>
+</html>
